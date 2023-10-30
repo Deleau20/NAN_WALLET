@@ -170,26 +170,21 @@
             <!-- NOS SERVICES DE TRANSACTION-->
 
             <!-- SLIDER IMAGE INFORMATION-->
-            <div class="slider_area">
-                <div class="slider_active owl-carousel">
-                    <div class="single_slider  d-flex align-items-center slider_bg_1">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-xl-12">
-                                    <div class="slider_text ">
-                                        <h3> <span>NaN-wallet</span> </h3>
-                                        <p>Avec NaN-wallet faites vos transaction en toute tranquilité <br> avec la
-                                            sécurité
-                                            garantie.</p>
-                                        {% if perms.app.add_account %}
-                                        <a href="{% url 'account' %}" class="boxed-btn3">Verifier le Portefueille</a>
-                                        {% endif %}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+            <div class="slogan_home">
+                <div class="slogan_text">
+                    <h3> <span>NaN-wallet</span> </h3>
+                    <p>
+                        L'appli qui vous permet d'envoyer et transférer de l'argent
+                        en une seconde, mais aussi suivre vos dépenses en quelques étapes.
+                        NaN-Wallet est l'application qui vous appartient réellement.
+                    </p>
+                    {% if perms.app.add_account %}
+                    <a href="{% url 'account' %}" class="boxed-btn3">Vérifier mon portefueille</a>
+                    {% endif %}
 
+                </div>
+                <div class="slogan_img">
+                    <!-- <img src="{% static 'img/slogan1.png' %}" alt=""> -->
                 </div>
             </div>
             <!-- FIN SLIDER IMAGE INFORMATION-->

@@ -95,7 +95,7 @@
     <header class="header">
         <div class="header__container">
 
-            <h3 class="header__logo">{{ user.username }}</h3>
+            <h5 class="header__logo">{{ user.username }}</h5>
 
             <div class="header__search">
                 <input type="search" placeholder="Rechercher" class="header__input">
@@ -124,17 +124,16 @@
                         <h3 class="nav__subtitle">Menu</h3>
 
                         <a href="{% url 'index' %}" class="nav__link active">
-                            <i class='bx bx-home nav__icon'></i>
-                            <span class="nav__name">Accueil</span>
+                            <i class='bx bx-home nav__icon'></i>                            <span class="nav__name">Accueil</span>
                         </a>
 
                         <a href="{% url 'staff_user' %}" class="nav__link">
-                            <i class='bx bxs-user-account nav__icon'></i>
+                            <i class='bx bx-user nav__icon'></i>
                             <span class="nav__name">Liste des utilisateurs</span>
                         </a>
 
                         <a href="{% url 'staff_transaction' %}" class="nav__link">
-                            <i class='bx bxs-user-account nav__icon'></i>
+                            <i class='bx bx-right-top-arrow-circle nav__icon'></i>
                             <span class="nav__name">Transactions</span>
                         </a>
                     </div>
@@ -212,9 +211,9 @@
                 <div class="slogan_text">
                     <h3> <span>NaN-wallet</span> </h3>
                     <p>
-                        Avec NaN-Wallet, vous pouvez non seulement envoyer et transférer de l'argent
+                        L'appli qui vous permet d'envoyer et transférer de l'argent
                         en une seconde, mais aussi suivre vos dépenses en quelques étapes.
-                        suivre vos dépenses en quelques étapes.
+                        NaN-Wallet est l'application qui vous appartient réellement.
                     </p>
                     {% if perms.app.add_account %}
                     <a href="{% url 'account' %}" class="boxed-btn3">Vérifier mon portefueille</a>
@@ -222,7 +221,7 @@
 
                 </div>
                 <div class="slogan_img">
-
+                    <!-- <img src="{% static 'img/slogan1.png' %}" alt=""> -->
                 </div>
             </div>
 

@@ -38,21 +38,21 @@
             </a>
         </div>
         <div class="blog_details">
-            <h2>Bank Information</h2><hr>
+            <h2>Informations banquaires</h2><hr>
             <div class="input-group-icon mt-10">
                 {% for bank in bank %}
                     <ul class="list cat-list">
                         <li><a href="{{ bank.get_absolute_url }}">
-                            <b style="color: black">Bank Account:</b>&emsp;{{ bank }}</a></li><hr>
+                            <b style="color: black">Compte banquaire:</b>&emsp;{{ bank }}</a></li><hr>
                     </ul>
                     {% empty %}
-                    <li><em>There are currently no bank accounts available.</em></li>
+                    <li><em>Il n'y a actuellement aucun compte banquaire disponible.</em></li>
                 {% endfor %}
             </div>
             <br>
             <div class="input-group-icon mt-10">
                  <a href="{% url 'bank_create' %}"
-                    class="btn rounded-0 btn-outline-primary">Add Bank</a>
+                    class="btn rounded-0 btn-outline-primary">Ajouter une banque</a>
             </div>
         </div>
     </article>
@@ -66,21 +66,21 @@
             </a>
         </div>
         <div class="blog_details">
-            <h2>Card Information</h2><hr>
+            <h2>Informations sur vos cartes</h2><hr>
             <div class="input-group-icon mt-10">
                 {% for card in card %}
                     <ul class="list cat-list">
                         <li><a href="{{ card.get_absolute_url }}">
-                            <b style="color: black">Card:</b>&emsp;{{ card }}</a></li><hr>
+                            <b style="color: black">Carte:</b>&emsp;{{ card }}</a></li><hr>
                     </ul>
                     {% empty %}
-                    <li><em>There are currently no cards available.</em></li>
+                    <li><em>Il n'y a actuellement aucune carte disponible.</em></li>
                 {% endfor %}
             </div>
             <br>
             <div class="input-group-icon mt-10">
                  <a href="{% url 'card_create' %}"
-                    class="btn rounded-0 btn-outline-primary">Add Card</a>
+                    class="btn rounded-0 btn-outline-primary">Ajouter une carte</a>
             </div>
         </div>
     </article>
