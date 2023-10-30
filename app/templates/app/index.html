@@ -1,0 +1,264 @@
+{%load static%}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--========== BOX ICONS ==========-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+
+    <!--========== CSS ==========-->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/test.css' %}">
+
+    <!--========== CSS MDB Bootstrap ==========-->
+    <!-- <link href="./css/mdb.min.css" rel="stylesheet"> -->
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <!-- <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}"> -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/magnific-popup.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/font-awesome.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/themify-icons.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/nice-select.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/flaticon.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/gijgo.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/animate.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/slicknav.css' %}">
+
+    <title>NaN | Wallet</title>
+</head>
+
+<body>
+    <!--========== HEADER ==========-->
+    <header class="header">
+        <div class="header__container">
+            {% if user.is_authenticated %}
+            <div class="header__img"></div>
+            <h1>{{ user.username }}</h1>     
+            {% else %}
+            <a href="#" class="header__logo">NaN</a>
+            <div class="connec_inscrip">
+                <div><a href="{% url 'user_login' %}">Se connecter</a></div>
+            </div>
+            {% endif %}
+            <div class="header__toggle">
+                <i class='bx bx-menu' id="header-toggle"></i>
+            </div>
+        </div>
+    </header>
+
+    <!--========== NAV ==========-->
+    <div class="nav" id="navbar">
+        <nav class="nav__container">
+            <div>
+                    <img src="{% static 'img/transfer.png' %}" class="nav__img" alt="">
+                    <span class="nav__logo-name">NaN</span>
+
+                <div class="nav__list">
+                    <div class="nav__items">
+                        <h3 class="nav__subtitle">Menu</h3>
+
+                        <a href="{% url 'index' %}" class="nav__link active">
+                            <i class='bx bx-home nav__icon'></i>
+                            <span class="nav__name">Accueil</span>
+                        </a>
+
+                        <div class="nav__dropdown">
+                            <i class='bx bx-user nav__icon'></i>
+                            <span class="nav__name">Activités</span>
+                            <i class='bx bx-chevron-down nav__icon nav__dropdown-icon'></i>
+
+                            <div class="nav__dropdown-collapse">
+                                <div class="nav__dropdown-content">
+                                    <a href="{% url 'activity' %}" class="nav__dropdown-item">Activités</a>
+                                    <a href="{% url 'send' %}" class="nav__dropdown-item">Envoies</a>
+                                    <a href="{% url 'request' %}" class="nav__dropdown-item">Receptions</a>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                    <div class="nav__items">
+                        <h3 class="nav__subtitle">Extra</h3>
+
+                        <div class="nav__dropdown">
+                            <a href="#" class="nav__link">
+                                <i class='bx bx-bell nav__icon'></i>
+                                <span class="nav__name">Messages</span>
+                            </a>
+
+                        </div>
+
+                        <a href="{% url 'account' %}" class="nav__link">
+
+                            <i class='bx bx-wallet-alt nav__icon'></i>
+                            <span class="nav__name">Portefueille</span>
+                        </a>
+                        <a href="{% url 'profile' %}" class="nav__link">
+                            <i class='bx bx-compass nav__icon'></i>
+                            <span class="nav__name">Profile</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {% if perms.app.add_transaction %}
+            <a href="{% url 'user_logout' %}" class="nav__link nav__logout">
+                <i class='bx bx-log-out nav__icon'></i>
+                <span class="nav__name">Déconnexion</span>
+            </a>
+            {% endif %}
+        </nav>
+    </div>
+
+    <!--========== CONTENTS ==========-->
+
+    <!-- header-end -->
+
+
+    <!-- NOS SERVICES DE TRANSACTION -->
+    <main>
+        <section class="main">
+            <div class="service_area">
+                <section class="section_info">
+                    <div class="solde">
+                        <div class="single_service">
+                            <div class="icon">
+                                <i class="flaticon-money"></i>
+                            </div>
+                            <h3>Envoyer</h3>
+                            <p>Envoyez votre argent à vos ami(e)s à la minute.</p>
+                            {% if perms.app.add_transaction %}
+                            <a href="{% url 'send' %}" class="boxed-btn3-white">Envoyer</a>
+                            {% else %}
+                            <br>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <div class="n_envois">
+                        <div class="single_service">
+                            <div class="icon">
+                                <i class="flaticon-money-2"></i>
+                            </div>
+                            <h3>Demande</h3>
+                            <p>Demandez de l'argent à votre ami sans hésitation.</p>
+                            {% if perms.app.add_transaction %}
+                            <a href="{% url 'request' %}" class="boxed-btn3-white">Demander</a>
+                            {% else %}
+                            <br>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="n_reception">
+                        <div class="single_service">
+                            <div class="icon">
+                                <i class="flaticon-bank"></i>
+                            </div>
+                            <h3>Transfert</h3>
+                            <p>Transférez de l'argent à la banque en un seul clic.</p>
+                            {% if perms.app.add_transaction %}
+                            <a href="{% url 'account' %}" class="boxed-btn3-white">Transfert</a>
+                            {% else %}
+                            <br>
+                            {% endif %}
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <!-- NOS SERVICES DE TRANSACTION-->
+
+            <!-- SLIDER IMAGE INFORMATION-->
+            <div class="slider_area">
+                <div class="slider_active owl-carousel">
+                    <div class="single_slider  d-flex align-items-center slider_bg_1">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-xl-12">
+                                    <div class="slider_text ">
+                                        <h3> <span>NaN-wallet</span> </h3>
+                                        <p>Avec NaN-wallet faites vos transaction en toute tranquilité <br> avec la
+                                            sécurité
+                                            garantie.</p>
+                                        {% if perms.app.add_account %}
+                                        <a href="{% url 'account' %}" class="boxed-btn3">Verifier le Portefueille</a>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <!-- FIN SLIDER IMAGE INFORMATION-->
+
+            <!-- FOOTER -->
+            <footer class="bg-light text-center text-lg-start" style="width: 70%; margin: auto;padding: 30px; ">
+                <!-- Copyright -->
+                <div id="text-footer" class="text-center p-2"
+                    style="color: #f4f0fa; text-align: center;padding: 7px;  background: #6871E0">
+                    &copy;
+                    <script>document.write(new Date().getFullYear());</script> NaN-wallet | Tous Droits Réservés
+                </div>
+            </footer>
+        </section>
+    </main>
+    <!--FIN FOOTER -->
+    <!--========== MAIN JS ==========-->
+    <script src="./js/main.js"></script>
+    <!-- link that opens popup -->
+
+    <!-- JS here -->
+    <script src="{% static 'js/test.js' %}"></script>
+    <script src="{% static 'js/vendor/jquery-1.12.4.min.js' %}"></script>
+    <script src="{% static 'js/vendor/jquery-1.12.4.min.js'%}"></script>
+    <script src="{% static 'js/popper.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'js/isotope.pkgd.min.js' %}"></script>
+    <script src="{% static 'js/ajax-form.js' %}"></script>
+    <script src="{% static 'js/waypoints.min.js' %}"></script>
+    <script src="{% static 'js/jquery.counterup.min.js' %}"></script>
+    <script src="{% static 'js/imagesloaded.pkgd.min.js' %}"></script>
+    <script src="{% static 'js/scrollIt.js' %}"></script>
+    <script src="{% static 'js/jquery.scrollUp.min.js' %}"></script>
+    <script src="{% static 'js/wow.min.js' %}"></script>
+    <script src="{% static 'js/nice-select.min.js' %}"></script>
+    <script src="{% static 'js/jquery.slicknav.min.js' %}"></script>
+    <script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
+    <script src="{% static 'js/plugins.js' %}"></script>
+    <script src="{% static 'js/gijgo.min.js' %}"></script>
+    <!--contact js-->
+    <script src="{% static 'js/contact.js' %}"></script>
+    <script src="{% static 'js/jquery.ajaxchimp.min.js' %}"></script>
+    <script src="{% static 'js/jquery.form.js' %}"></script>
+    <script src="{% static 'js/jquery.validate.min.js' %}"></script>
+    <script src="{% static 'js/mail-script.js' %}"></script>
+
+    <script src="{% static 'js/main.js' %}"></script>
+    <script>
+        $('#datepicker').datepicker({
+            iconsLibrary: 'fontawesome',
+            icons: {
+                rightIcon: '<span class="fa fa-caret-down"></span>'
+            }
+        });
+        $('#datepicker2').datepicker({
+            iconsLibrary: 'fontawesome',
+            icons: {
+                rightIcon: '<span class="fa fa-caret-down"></span>'
+            }
+
+        });
+        $(document).ready(function () {
+            $('.js-example-basic-multiple').select2();
+        });
+    </script>
+</body>
+
+</html>

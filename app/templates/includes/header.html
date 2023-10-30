@@ -1,0 +1,17 @@
+<header class="header">
+    <div class="header__container">
+        <h1>{{ user.username }}</h1>
+        <!-- <div class="header__search"> -->
+            <!-- <input type="search" placeholder="Rechercher" class="header__input"> -->
+            <!-- <div class="connec_inscrip">
+                <div><a href="{% url 'user_login' %}">Connexion</a></div>
+                <div><a href="{% url 'registration' %}">Inscription</a></div>
+            </div> -->
+            <!-- <i class='bx bx-search header__icon' style="color: #6871E0;"></i> -->
+        <!-- </div> -->
+        <div class="header__toggle">
+            <i class='bx bx-menu' id="header-toggle"></i>
+        </div>
+    </div>
+</header>
+{% include "includes/nav.html" %}

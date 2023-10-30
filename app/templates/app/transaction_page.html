@@ -1,0 +1,120 @@
+
+{% extends 'app/base.html' %}
+
+{% load static %}
+{% block content %}
+    <!-- bradcam_area_start  -->
+    <div class="bradcam_area breadcam_bg bradcam_overlay">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="bradcam_text">
+                        <h3>Envoyer & demander</h3>
+                        <p><a href="{% url 'index' %}">Accueil /</a>Envoyer & demander</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- bradcam_area_end  -->
+
+    <!-- business_expert_area_start  -->
+    <main>
+        <section class="main">
+    <div class="nav" id="navbar">
+        <nav class="nav__container">
+            <div>
+                <a href="#" class="nav__link nav__logo">
+                    <img src="{% static 'img/transfer.png' %}"  class="nav__img" alt="">
+                    <span class="nav__logo-name">NaN</span>
+                </a>
+
+                <div class="nav__list">
+                    <div class="nav__items">
+                        <h3 class="nav__subtitle">Menu</h3>
+
+                        <a href="{% url 'index' %}" class="nav__link active">
+                            <i class='bx bx-home nav__icon' ></i>
+                            <span class="nav__name">Accueil</span>
+                        </a>
+                        
+                        <div class="nav__dropdown">
+                                <i class='bx bx-user nav__icon' ></i>
+                                <span class="nav__name">Activités</span>
+                                <i class='bx bx-chevron-down nav__icon nav__dropdown-icon'></i>
+
+                            <div class="nav__dropdown-collapse">
+                                <div class="nav__dropdown-content">
+                                    <a href="{% url 'activity' %}" class="nav__dropdown-item">Activités</a>
+                                    <a href="{% url 'send' %}" class="nav__dropdown-item">Envoies</a>
+                                    <a href="{% url 'request' %}" class="nav__dropdown-item">Receptions</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        
+                    </div>
+
+                    <div class="nav__items">
+                        <h3 class="nav__subtitle">Extra</h3>
+
+                        <div class="nav__dropdown">
+                            <a href="#" class="nav__link">
+                                <i class='bx bx-bell nav__icon' ></i>
+                                <span class="nav__name">Messages</span>
+                            </a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% if perms.app.add_transaction %}
+                <a href="{% url 'user_logout' %}" class="nav__link nav__logout">
+                    <i class='bx bx-log-out nav__icon' ></i>
+                    <span class="nav__name">Déconnexion</span>
+                </a>
+            {% endif %}
+        </nav>
+    </div>
+
+    <!-- <div class="business_expert_area">
+        <div class="business_tabs_area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-12">
+                        <ul class="nav" id="myTab" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link {% if nbar == 'send' %}active{% endif %}"
+                                   id="send-tab" href="{% url 'send' %}" role="tab" >Envoyer de l'argent</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link {% if nbar == 'request' %}active{% endif %}"
+                                   id="request-tab" href="{% url 'request' %}" role="tab" >Demande d'argent</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link {% if nbar == 'incomplete' %}active{% endif %}"
+                                   id="incomplete-tab" href="{% url 'incomplete' %}" role="tab" >Transaction incomplète</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+        {% if nbar == 'send' %}
+            {% block send %} default {% endblock %}
+        {% elif nbar == 'request' %}
+            {% block request %} default {% endblock %}
+        {% elif nbar == 'incomplete' %}
+            {% block incomplete %} default {% endblock %}
+        {% endif %}
+    </div>
+</section>
+</main>
+ 
+
+<script src="./js/main.js"></script>
+
+    <!-- business_expert_area_end  -->
+{% endblock %}
