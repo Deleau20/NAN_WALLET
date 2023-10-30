@@ -39,7 +39,6 @@
             <div class="header__img"></div>
             <h1>{{ user.username }}</h1>     
             {% else %}
-            <a href="#" class="header__logo">NaN</a>
             <div class="connec_inscrip">
                 <div><a href="{% url 'user_login' %}">Se connecter</a></div>
             </div>
@@ -55,8 +54,6 @@
         <nav class="nav__container">
             <div>
                     <img src="{% static 'img/transfer.png' %}" class="nav__img" alt="">
-                    <span class="nav__logo-name">NaN</span>
-
                 <div class="nav__list">
                     <div class="nav__items">
                         <h3 class="nav__subtitle">Menu</h3>

@@ -94,18 +94,23 @@
     <!--========== HEADER ==========-->
     <header class="header">
         <div class="header__container">
-           <h1>{{ user.username }}</h1></div>
 
-            <a href="#" class="header__logo">NaN</a>
+            <h3 class="header__logo">{{ user.username }}</h3>
 
             <div class="header__search">
                 <input type="search" placeholder="Rechercher" class="header__input">
                 <i class='bx bx-search header__icon' style="color: #6871E0;"></i>
             </div>
+            <a href="{% url 'profile' %}">
+                <img src="{% static 'img/boy.png' %}" width="40px" height="40px"
+                    style="border-radius: 50%; border: #6871E0 solid 1px;" alt="dgyu" class="header__img">
+            </a>
 
             <div class="header__toggle">
                 <i class='bx bx-menu' id="header-toggle"></i>
             </div>
+
+
         </div>
     </header>
 
@@ -113,9 +118,7 @@
     <div class="nav" id="navbar">
         <nav class="nav__container">
             <div>
-                    <img src="{% static 'img/transfer.png' %}" alt="">
-                    <span class="nav__logo-name">NaN</span>
-
+                <img src="{% static 'img/transfer.png' %}" alt="">
                 <div class="nav__list">
                     <div class="nav__items">
                         <h3 class="nav__subtitle">Menu</h3>
@@ -205,7 +208,25 @@
 
             <!-- SLIDER IMAGE INFO -->
 
-            <div class="slider_area">
+            <div class="slogan_home">
+                <div class="slogan_text">
+                    <h3> <span>NaN-wallet</span> </h3>
+                    <p>
+                        Avec NaN-Wallet, vous pouvez non seulement envoyer et transférer de l'argent
+                        en une seconde, mais aussi suivre vos dépenses en quelques étapes.
+                        suivre vos dépenses en quelques étapes.
+                    </p>
+                    {% if perms.app.add_account %}
+                    <a href="{% url 'account' %}" class="boxed-btn3">Vérifier mon portefueille</a>
+                    {% endif %}
+
+                </div>
+                <div class="slogan_img">
+
+                </div>
+            </div>
+
+            <!-- <div class="slider_area">
                 <div class="slider_active owl-carousel">
                     <div class="single_slider  d-flex align-items-center slider_bg_1">
                         <div class="container">
@@ -213,7 +234,8 @@
                                 <div class="col-xl-12">
                                     <div class="slider_text ">
                                         <h3> <span>NaN-wallet</span> </h3>
-                                        <p>Avec NaN-Wallet, vous pouvez non seulement envoyer et transférer de l'argent en une seconde, mais aussi suivre vos dépenses en quelques étapes.
+                                        <p>Avec NaN-Wallet, vous pouvez non seulement envoyer et transférer de l'argent
+                                            en une seconde, mais aussi suivre vos dépenses en quelques étapes.
                                             suivre vos dépenses en quelques étapes.</p>
                                         {% if perms.app.add_account %}
                                         <a href="{% url 'account' %}" class="boxed-btn3">Vérifier mon portefueille</a>
@@ -225,7 +247,7 @@
                     </div>
 
                 </div>
-            </div>
+            </div> -->
             <!--FIN SLIDER IMAGE INFO -->
 
             <!-- FOOTER -->
