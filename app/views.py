@@ -1,4 +1,5 @@
 from django import forms
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.contrib.auth.views import LoginView, LogoutView
 from django.http import HttpResponseRedirect, HttpResponseNotFound
@@ -9,6 +10,7 @@ from django.db.models import Q, F
 from django.views import View
 from django.views.generic import CreateView, ListView, UpdateView, DeleteView
 from django.contrib import messages
+from django.utils.decorators import method_decorator
 from app.forms import (
     UserRegistrationForm,
     UserForm,
@@ -33,15 +35,15 @@ from .models import (
     PaymentMethod,
 )
 
+@method_decorator(login_required, name='dispatch')
 class Index(View):
     def get(self, request):
         return render(request, 'app/index.html')
-    
-    
+
+@method_decorator(login_required, name='dispatch')
 class AdminIndex(View):
     def get(self, request):
         return render(request, 'staff/index.html')
-
 
 class UserLogin(LoginView):
     def get_success_url(self):
