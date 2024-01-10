@@ -35,19 +35,20 @@
     <!--========== HEADER ==========-->
     <header class="header">
         <div class="header__container">
-            {% if user.is_authenticated %}
-            <div class="header__img"></div>
-            <h1>{{ user.username }}</h1>     
-            {% else %}
-            <div class="connec_inscrip">
-                <div><a href="{% url 'user_login' %}">Se connecter</a></div>
+            <div class="header__img"><a href="{% url 'user_logout' %}">{{ user.username }}</a></div>
+
+            <a href="#" class="header__logo">NaN</a>
+
+            <div class="header__search">
+                <input type="search" placeholder="Rechercher" class="header__input">
+                <i class='bx bx-search header__icon' style="color: #6871E0;"></i>
             </div>
-            {% endif %}
+
             <div class="header__toggle">
                 <i class='bx bx-menu' id="header-toggle"></i>
             </div>
         </div>
-    </header>
+       </header>
 
     <!--========== NAV ==========-->
     <div class="nav" id="navbar">
