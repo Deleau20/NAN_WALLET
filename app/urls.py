@@ -29,6 +29,7 @@ from app.views import (
     PaymentComplete,
     IncompleteRequest,
     IncompleteRequestDelete,
+    
     StaffTransactionList,
     StaffTranDetail,
     StaffTranDelete,
@@ -40,6 +41,9 @@ from app.views import (
     StaffUserPayment,
     StaffUserBankDetail,
     StaffUserCardDetail,
+    
+    UserRegistration,
+    UserResetPwd,
 )
 
 urlpatterns = [
@@ -72,6 +76,9 @@ urlpatterns = [
     path('incomplete/payment/complete/', PaymentComplete.as_view(), name='payment_complete'),
     path('incomplete/request/<int:pk>/detail/', IncompleteRequest.as_view(), name='incomplete_request'),
     path('incomplete/request/<int:pk>/delete/', IncompleteRequestDelete.as_view(), name='incomplete_request_delete'),
+    
+    path('register/', UserRegistration.as_view(), name='register'),
+    path('forgot_password/', UserResetPwd.as_view(), name='forgot_password'),
 
     path('staff/transaction/', StaffTransactionList.as_view(), name='staff_transaction'),
     path('staff/transaction/<int:pk>/detail/', StaffTranDetail.as_view(), name='staff_tran_detail'),

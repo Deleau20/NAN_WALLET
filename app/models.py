@@ -1,3 +1,4 @@
+from django import forms
 from django.db import models
 from django.utils.timezone import now
 from django.contrib.auth.models import User, AbstractUser
@@ -20,6 +21,14 @@ class PaymentMethod(models.Model):
 
     def __str__(self):
         return str(self.method_id)
+    
+    
+class Seller(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    # Add any additional fields specific to the seller
+
+    def __str__(self):
+        return f"Seller: {self.user.username}"
 
 
 class Account(models.Model):
@@ -186,6 +195,36 @@ class Transaction(models.Model):
         # ensure that the database only stores 2 decimal places
         self.amount = round(self.amount, 2)
         super(Transaction, self).save(*args, **kwargs)
+
+    def __str__(self):
+        return str(self.transaction_id)
+
+    class Meta:
+        ordering = ['category']
+        
+        
+class SellerTransaction(models.Model):
+    transaction_id = models.AutoField(primary_key=True)
+    transaction_type = models.CharField(max_length=45, choices=Transaction_Type, default='')
+    category = models.CharField(max_length=45, choices=Categories)
+    amount = models.FloatField(default=0.00)
+    description = models.CharField(max_length=200, default=False)
+    create_date = models.DateTimeField(default=now, editable=False)
+    is_complete = models.BooleanField(default=False)
+    receiver = models.ForeignKey(User, related_name='seller_receiver', on_delete=models.PROTECT, default='')
+    creator = models.ForeignKey(Seller, related_name='creator', on_delete=models.PROTECT, default='')
+    payment_method = models.ForeignKey(PaymentMethod, related_name='seller_payment_method',
+                                       on_delete=models.PROTECT, default='', null=True)
+
+    def get_absolute_url(self):
+        return reverse('seller_tran_detail', kwargs={'pk': self.pk})
+
+    def get_delete_url(self):
+        return reverse('seller_tran_delete', kwargs={'pk': self.pk})
+
+    def save(self, *args, **kwargs):
+        self.amount = round(self.amount, 2)
+        super(SellerTransaction, self).save(*args, **kwargs)
 
     def __str__(self):
         return str(self.transaction_id)
