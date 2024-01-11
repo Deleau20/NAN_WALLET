@@ -76,10 +76,10 @@
                     <input type="checkbox">
                     <label>Souvenez-vous de moi</label>
                 </div>
-                <span class="span">Mot de passe oublié ?</span>
+                <a href="{% url 'forgot_password' %}" style="text-decoration:none;"><span class="span">Mot de passe oublié ?</span></a>
             </div>
             <button class="button-submit">Se connecter</button>
-            <p class="p">Vous n'avez pas de compte ?<span class="span">S'inscrire</span>
+            {% comment %} <p class="p">Vous n'avez pas de compte ?<a href="{% url 'register' %}" style="text-decoration:none;"><span class="span">S'inscrire</span></a> {% endcomment %}
 
             </p>
             <p class="p line">Ou</p>
