@@ -11,6 +11,7 @@ from django.views import View
 from django.views.generic import CreateView, ListView, UpdateView, DeleteView
 from django.contrib import messages
 from django.utils.decorators import method_decorator
+from django.contrib.auth.decorators import user_passes_test
 from app.forms import (
     UserRegistrationForm,
     UserForm,
@@ -35,12 +36,22 @@ from .models import (
     PaymentMethod,
 )
 
+    # Cette fonction retourne True si l'utilisateur est un utilisateur standard.
+def is_standard_user(user):
+    return not user.is_staff
+
+    # Cette fonction retoure True si l'utilisateur est un administrateur.
+def is_admin(user):
+    return user.is_staff
+
 @method_decorator(login_required, name='dispatch')
+@method_decorator(user_passes_test(is_standard_user), name='dispatch')
 class Index(View):
     def get(self, request):
         return render(request, 'app/index.html')
 
 @method_decorator(login_required, name='dispatch')
+@method_decorator(user_passes_test(is_admin), name='dispatch')
 class AdminIndex(View):
     def get(self, request):
         return render(request, 'staff/index.html')
