@@ -53,23 +53,22 @@
     <div class="nav" id="navbar">
         <nav class="nav__container">
             <div>
-                    <img src="{% static 'img/transfer.png' %}"  class="nav__img" alt="">
-                <div class="nav__list" style="margin-left: 12px;">
+                <img src="{% static 'img/transfer.png' %}" alt="">
+                <div class="nav__list">
                     <div class="nav__items">
                         <h3 class="nav__subtitle">Menu</h3>
 
-                        <a href="{% url 'index' %}" class="nav__link">
-                            <i class='bx bx-home nav__icon'></i>
-                            <span class="nav__name">Accueil</span>
+                        <a href="{% url 'admin_index' %}" class="nav__link active">
+                            <i class='bx bx-home nav__icon'></i>                            <span class="nav__name">Accueil</span>
                         </a>
-                        
-                        <a href="{% url 'staff_user' %}" class="nav__link active">
-                            <i class='bx bxs-user-account nav__icon'></i>
+
+                        <a href="{% url 'staff_user' %}" class="nav__link">
+                            <i class='bx bx-user nav__icon'></i>
                             <span class="nav__name">Liste des utilisateurs</span>
                         </a>
 
-                         <a href="{% url 'staff_transaction' %}" class="nav__link">
-                            <i class='bx bxs-user-account nav__icon'></i>
+                        <a href="{% url 'staff_transaction' %}" class="nav__link">
+                            <i class='bx bx-right-top-arrow-circle nav__icon'></i>
                             <span class="nav__name">Transactions</span>
                         </a>
                     </div>
@@ -77,17 +76,20 @@
             </div>
 
             <a href="{% url 'user_logout' %}" class="nav__link nav__logout">
-                <i class='bx bx-log-out nav__icon' ></i>
+                <i class='bx bx-log-out nav__icon'></i>
                 <span class="nav__name">Déconnexion</span>
             </a>
         </nav>
     </div>
 
     <!--========== CONTENTS ==========-->
-
+    <main>
+        <section class="main">
     {% block content %}
         This is default content!
     {% endblock %}
+        </section>
+    </main>
 
       <!-- FOOTER -->
       <footer class="bg-light text-center text-lg-start" style="width: 70%; margin: auto;padding: 30px; ">
